@@ -74,8 +74,7 @@ app.on('connection', (socket) => {
   socket.on('close', removeClient(socket));
   socket.on('error', () => {
     logger.log(logger.ERROR, socket.name);
-    // Jennifer - Vinicio says to do this extra execution
-    // because removeClient returns a function.
+   
     removeClient(socket)();
   });
 });
@@ -89,7 +88,7 @@ server.start = () => {
   }
   logger.log(logger.INFO, `Server is up on PORT ${process.env.PORT}`);
 
-  // Jennifer - Node is expecting a port object, not just a number
+  
   return app.listen({ port: 3000 }, () => {});
 };
 
